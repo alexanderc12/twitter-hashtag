@@ -1,0 +1,8 @@
+---Requisitos del proyecto---
+1. Se requiere autenticarse en el api de Twitter
+2. Se desea requiere obtener un archivo .json con una lista de Tweets a partir de un hashtag usando el API
+3. Del Tweet se desea obtener la la informacion más relevante y pasarla a una lista de objetos
+4. Se requiere crear un componente que muestre la informacion de un Tweet
+4. Se quiere crear una interfaz de usuario con un boton que inice el proceso
+5. Mejorar la interfaz para que sea agredable para el usuario
+6. Agregar opciones de usabilidad(por ejemplo busqueda por idioma)
