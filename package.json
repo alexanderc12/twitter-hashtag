@@ -1,0 +1,14 @@
+{
+  "name": "twitterApp",
+  "version": "0.0.1",
+  "description": "Aplicacion para obtener los tweets de un hashtag",
+  "main": "server.js",
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "body-parser": "*",
+    "morgan": "*",
+    "nunjucks" : "*",
+    "serve-favicon": "*"
+  }
+}
