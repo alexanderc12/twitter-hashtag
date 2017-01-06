@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Encuentra tu #hash</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
     <script src="/js/controllers/generalController.js"></script>
 </head>
     <body ng-app="twitterApp">
-    <h1>Busca tu #hastag:</h1>
+    <h1>Todo acerca de tu #hastag:</h1>
         <div ng-controller="GeneralController as controller">
-            [[controller.name]]
+            <form ng-submit="controller.getList()">
+                <input type="text" ng-model="controller.text"  size="30"
+                       placeholder="escribe lo que quieras buscar...">
+                <input  type="submit" value="Buscar por etiqueta">
+            </form>
         </div>
     </body>
 </html>

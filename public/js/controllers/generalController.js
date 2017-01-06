@@ -8,16 +8,30 @@ app.config(function ($interpolateProvider) {
     $interpolateProvider.endSymbol(']]');
 });
 
-app.controller('GeneralController', function($http) {
+app.controller('GeneralController', function($http, $sce){
     var ctrl = this;
-    ctrl.name = 'Alex';
+    var token;
     var auth = function () {
-        var authReq = {
+        var tokenReq = {
             method: 'GET',
             url: 'http://127.0.0.1:8080/auth'
         };
-        $http(authReq).then(function(res){console.log(res.data);}, function(){console.log('Error');});
+        $http(tokenReq).then(function(res){
+            token = JSON.parse(res.data.token)["access_token"];
+            console.log(token);
+        }, function(){console.log('Error');});
     };
     auth();
+
+    ctrl.getList = function () {
+        var listRew = {
+            method: 'POST',
+            url: 'http://127.0.0.1:8080/tweets',
+            data: {token: token, text: ctrl.text}
+        };
+        $http(listRew).then(function(res){
+            console.log(res.data);
+        }, function(){console.log('Error');});
+    };
 });
 
