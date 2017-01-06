@@ -31,6 +31,7 @@ app.controller('GeneralController', function($http, $sce){
         };
         $http(listRew).then(function(res){
             console.log(res.data);
+            ctrl.list = res.data.list;
         }, function(){console.log('Error');});
     };
 });

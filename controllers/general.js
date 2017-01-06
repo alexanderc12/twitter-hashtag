@@ -23,7 +23,7 @@ router.post('/tweets', function (req, res, next) {
             list += data;
         });
         response.on('end', function () {
-            req.list = list;
+            req.list = JSON.parse(list)['statuses'].map(function(tweet){return extractTweet(tweet)});
             console.log(list);
             next();
         });
@@ -35,5 +35,11 @@ router.post('/tweets', function (req, res, next) {
 }, function (req, res, next) {
     res.send({list: req.list});
 });
+
+var extractTweet = function (tweet) {
+    var newTweet = {};
+    newTweet.text = tweet.text;
+    return newTweet;
+};
 
 module.exports = router;

@@ -14,6 +14,14 @@
                        placeholder="escribe lo que quieras buscar...">
                 <input  type="submit" value="Buscar por etiqueta">
             </form>
+            <ul>
+                <li ng-repeat="tweet in controller.list">
+                   [[tweet.text]]
+                </li>
+                <li ng-if="results.length === 0">
+                    <strong>No tienes resultados aun :(</strong>
+                </li>
+            </ul>
         </div>
     </body>
 </html>
