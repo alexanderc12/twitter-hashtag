@@ -24,7 +24,6 @@ router.post('/tweets', function (req, res, next) {
         });
         response.on('end', function () {
             req.list = JSON.parse(list)['statuses'].map(function(tweet){return extractTweet(tweet)});
-            console.log(list);
             next();
         });
         response.on('error', function (error) {
@@ -39,6 +38,11 @@ router.post('/tweets', function (req, res, next) {
 var extractTweet = function (tweet) {
     var newTweet = {};
     newTweet.text = tweet.text;
+    var date = new Date(tweet.created_at);
+    newTweet.date = date.getDay()+ '/'+ date.getMonth()+1 + '/' + date.getFullYear();
+    newTweet.user = tweet.user.name;
+    newTweet.userImg = tweet.user.profile_image_url;
+    newTweet.fav = false;
     return newTweet;
 };
 

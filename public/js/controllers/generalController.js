@@ -40,11 +40,23 @@ app.component('tweet', {
     bindings: {
         data: '='
     },
-    template:'<div> [[$ctrl.data.text]] <button data-ng-click="$ctrl.mark()">Fav</button></div>',
+    template:'<div class="card"> ' +
+        '<div class="card-header">' +
+            '<h2 style="float: left">[[$ctrl.data.user]]</h2>' +
+            '<h4 style="float: right">[[$ctrl.data.date]]</h4>' +
+        '</div>'+
+        '<div class="card-body">'+
+            '<p style="text-align: justify"><img  class="card-img" ng-src="[[$ctrl.data.userImg]]" alt="[[$ctrl.data.user]] image"/>[[$ctrl.data.text]]</p>' +
+        '</div>' +
+        '<div class="card-footer">' +
+            ' <button data-ng-click="$ctrl.mark()"><span ng-show="[[$ctrl.data.fav]] === false"><i class="icon-star-empty"></i><span ng-show="[[$ctrl.data.fav]]"><i class="icon-star"></span></button>' +
+        '<div>' +
+    '</div>',
     controller: function () {
         function mark() {
-            this.data.fav = true;
+            this.data.fav = !this.data.fav;
         }
+        this.mark = mark;
     }
 });
 
