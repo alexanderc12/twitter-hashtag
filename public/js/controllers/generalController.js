@@ -36,3 +36,15 @@ app.controller('GeneralController', function($http, $sce){
     };
 });
 
+app.component('tweet', {
+    bindings: {
+        data: '='
+    },
+    template:'<div> [[$ctrl.data.text]] <button data-ng-click="$ctrl.mark()">Fav</button></div>',
+    controller: function () {
+        function mark() {
+            this.data.fav = true;
+        }
+    }
+});
+
